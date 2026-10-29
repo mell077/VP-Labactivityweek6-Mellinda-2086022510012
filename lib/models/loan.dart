@@ -24,9 +24,13 @@ class Loan {
         id: id,
         bookId: bookId,
         studentId: studentId,
-        borrowDate: borrowDate,
+        borrowDate: borrowDate
         dueDate: dueDate,
         returnDate: returnDate ?? this.returnDate,
         unpaidFine: unpaidFine ?? this.unpaidFine,
       );
+
+  static Object? fromJson(Map<String, dynamic> e, DateTime today) {
+    return null;
+  }
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../models/book.dart';
-import '../viewmodels/library_view_model.dart';
-import 'status_style.dart';
+import '../viewmodels/display_status.dart';
+import 'status_chip.dart';
 
 class BookCard extends StatelessWidget {
   final Book book;

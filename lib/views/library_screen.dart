@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import '../viewmodels/library_view_model.dart';
 import 'book_card.dart';
 import 'borrowed_books_screen.dart';
-import 'student_fine_card.dart';
-import 'summary_card.dart';
+import 'fine_summary_card.dart';
 
 class LibraryScreen extends StatefulWidget {
   final LibraryViewModel viewModel;
@@ -49,7 +48,7 @@ class _LibraryScreenState extends State<LibraryScreen> {
         body: ListenableBuilder(
           listenable: vm,
           builder: (context, _) => ListView(children: [
-            SummaryCard(
+            FineSummaryCard(
               available: vm.availableCount,
               borrowed: vm.borrowedCount,
               overdue: vm.overdueCount,

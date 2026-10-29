@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../viewmodels/library_view_model.dart';
-import 'formatters.dart';
-import 'status_style.dart';
+import '../viewmodels/display_status.dart';
+import 'status_chip.dart';
+import 'view_helpers.dart';
 
 class LoanCard extends StatelessWidget {
   final String bookTitle;

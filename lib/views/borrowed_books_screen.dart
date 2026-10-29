@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../viewmodels/display_status.dart';
 import '../viewmodels/library_view_model.dart';
+import 'fine_summary_card.dart';
 import 'loan_card.dart';
-import 'summary_card.dart';
 
 class BorrowedBooksScreen extends StatelessWidget {
   final LibraryViewModel viewModel;
@@ -17,7 +18,7 @@ class BorrowedBooksScreen extends StatelessWidget {
             final active = viewModel.activeLoans;
             final history = viewModel.returnedLoans;
             return ListView(children: [
-              SummaryCard(
+              FineSummaryCard(
                 available: viewModel.availableCount,
                 borrowed: viewModel.borrowedCount,
                 overdue: viewModel.overdueCount,

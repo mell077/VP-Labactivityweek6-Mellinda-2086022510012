@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../viewmodels/library_view_model.dart';
+import '../viewmodels/display_status.dart';
 
 /// Cara konsisten untuk menampilkan status (tersedia, dipinjam, terlambat, hilang).
 class StatusStyle {

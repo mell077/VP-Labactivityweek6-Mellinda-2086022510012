@@ -14,6 +14,14 @@ class Book {
     this.isAvailable = true,
   });
 
+  factory Book.fromJson(Map<String, dynamic> json) => Book(
+        id: json['id'] as String,
+        title: json['title'] as String,
+        author: json['author'] as String,
+        replacementPrice: json['replacementPrice'] as int,
+        isAvailable: json['isAvailable'] as bool? ?? true,
+      );
+
   Book copyWith({bool? isAvailable}) => Book(
         id: id,
         title: title,

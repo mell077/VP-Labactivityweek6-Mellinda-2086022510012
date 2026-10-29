@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
-import 'models/sample_data.dart';
 import 'viewmodels/library_view_model.dart';
 import 'views/library_screen.dart';
 
-void main() => runApp(const LibraryApp());
+void main() => runApp(const LibraryApp(viewModel: null,));
 
 class LibraryApp extends StatefulWidget {
-  const LibraryApp({super.key});
+  const LibraryApp({super.key, required LibraryViewModel viewModel});
 
   @override
   State<LibraryApp> createState() => _LibraryAppState();
@@ -15,8 +14,8 @@ class LibraryApp extends StatefulWidget {
 
 class _LibraryAppState extends State<LibraryApp> {
   late final LibraryViewModel _viewModel = LibraryViewModel(
-    books: buildSampleBooks(),
-    loans: buildSampleLoans(DateTime.now()),
+    book: buildSampleBook(),
+    loan: buildSampleLoan(DateTime.now()), service: null,
   );
 
   @override
@@ -30,5 +29,6 @@ class _LibraryAppState extends State<LibraryApp> {
         title: 'Sistem Perpustakaan Universitas',
         theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.indigo),
         home: LibraryScreen(viewModel: _viewModel),
-      );
+  );
 }
+

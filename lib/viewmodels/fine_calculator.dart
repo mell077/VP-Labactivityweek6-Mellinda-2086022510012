@@ -1,6 +1,6 @@
 /// Kebijakan denda terpusat di satu tempat (aturan 6) dan
 /// perhitungan tanggal yang konsisten berbasis tanggal kalender (aturan 7).
-class FinePolicy {
+class FineCalculator {
   static const int finePerWeek = 5000; // Rp per minggu terlambat yang selesai
   static const int loanDurationDays = 14; // lama peminjaman standar
   static const int lostAfterMonths = 6; // batas buku dinyatakan Hilang

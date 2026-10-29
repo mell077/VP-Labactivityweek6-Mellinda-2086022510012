@@ -1,3 +1,4 @@
+/// Pembantu tampilan: hanya mengubah angka/tanggal menjadi teks.
 String formatRupiah(int amount) {
   final s = amount.toString();
   final buf = StringBuffer();

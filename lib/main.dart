@@ -1,34 +1,30 @@
 import 'package:flutter/material.dart';
 
+import 'models/library_repository.dart';
+import 'models/library_service.dart';
 import 'viewmodels/library_view_model.dart';
 import 'views/library_screen.dart';
 
-void main() => runApp(const LibraryApp(viewModel: null,));
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
 
-class LibraryApp extends StatefulWidget {
-  const LibraryApp({super.key, required LibraryViewModel viewModel});
-
-  @override
-  State<LibraryApp> createState() => _LibraryAppState();
-}
-
-class _LibraryAppState extends State<LibraryApp> {
-  late final LibraryViewModel _viewModel = LibraryViewModel(
-    book: buildSampleBook(),
-    loan: buildSampleLoan(DateTime.now()), service: null,
+  // Data dibaca dari assets/data/books.json lewat repository (Model).
+  final data = await const LibraryRepository().load();
+  final viewModel = LibraryViewModel(
+    service: LibraryService(books: data.books, loans: data.loans),
   );
 
-  @override
-  void dispose() {
-    _viewModel.dispose();
-    super.dispose();
-  }
+  runApp(LibraryApp(viewModel: viewModel));
+}
+
+class LibraryApp extends StatelessWidget {
+  final LibraryViewModel viewModel;
+  const LibraryApp({super.key, required this.viewModel});
 
   @override
   Widget build(BuildContext context) => MaterialApp(
         title: 'Sistem Perpustakaan Universitas',
         theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.indigo),
-        home: LibraryScreen(viewModel: _viewModel),
-  );
+        home: LibraryScreen(viewModel: viewModel),
+      );
 }
-

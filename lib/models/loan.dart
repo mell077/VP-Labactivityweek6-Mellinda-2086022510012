@@ -18,19 +18,33 @@ class Loan {
     this.unpaidFine = 0,
   });
 
+  /// Membaca data pinjaman awal dari JSON. `dueInDays` adalah selisih hari
+  /// jatuh tempo terhadap [today] (negatif = sudah lewat jatuh tempo).
+  factory Loan.fromJson(
+    Map<String, dynamic> json,
+    DateTime today, {
+    int loanDays = 14,
+  }) {
+    final dueInDays = json['dueInDays'] as int;
+    return Loan(
+      id: json['id'] as String,
+      bookId: json['bookId'] as String,
+      studentId: json['studentId'] as String,
+      borrowDate:
+          DateTime(today.year, today.month, today.day + dueInDays - loanDays),
+      dueDate: DateTime(today.year, today.month, today.day + dueInDays),
+    );
+  }
+
   bool get isActive => returnDate == null;
 
   Loan copyWith({DateTime? returnDate, int? unpaidFine}) => Loan(
         id: id,
         bookId: bookId,
         studentId: studentId,
-        borrowDate: borrowDate
+        borrowDate: borrowDate,
         dueDate: dueDate,
         returnDate: returnDate ?? this.returnDate,
         unpaidFine: unpaidFine ?? this.unpaidFine,
       );
-
-  static Object? fromJson(Map<String, dynamic> e, DateTime today) {
-    return null;
-  }
 }

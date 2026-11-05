@@ -24,10 +24,9 @@ class StudentSummary {
 /// ViewModel: semua aturan bisnis & keputusan peminjaman ada di sini.
 class LibraryViewModel extends ChangeNotifier {
   LibraryViewModel({
-    required LibraryService service,
+    required this._service,
     DateTime Function()? clock, loan, book,
-  })  : _service = service,
-        _clock = clock ?? DateTime.now;
+  })  : _clock = clock ?? DateTime.now;
 
   final LibraryService _service;
   final DateTime Function() _clock; // bisa diganti saat pengujian

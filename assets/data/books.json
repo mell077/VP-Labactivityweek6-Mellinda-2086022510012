@@ -1,0 +1,16 @@
+{
+  "books": [
+    { "id": "B1", "title": "Pemrograman Dart", "author": "A. Santoso", "replacementPrice": 85000, "isAvailable": true },
+    { "id": "B2", "title": "Flutter untuk Pemula", "author": "R. Putri", "replacementPrice": 95000, "isAvailable": false },
+    { "id": "B3", "title": "Struktur Data", "author": "D. Wijaya", "replacementPrice": 120000, "isAvailable": false },
+    { "id": "B4", "title": "Basis Data Relasional", "author": "S. Lestari", "replacementPrice": 110000, "isAvailable": false },
+    { "id": "B5", "title": "Jaringan Komputer", "author": "H. Kurniawan", "replacementPrice": 150000, "isAvailable": false },
+    { "id": "B6", "title": "Rekayasa Perangkat Lunak", "author": "M. Rahman", "replacementPrice": 130000, "isAvailable": true }
+  ],
+  "loans": [
+    { "id": "L1", "bookId": "B2", "studentId": "2024001", "dueInDays": 4 },
+    { "id": "L2", "bookId": "B3", "studentId": "2024002", "dueInDays": -8 },
+    { "id": "L3", "bookId": "B4", "studentId": "2024002", "dueInDays": -15 },
+    { "id": "L4", "bookId": "B5", "studentId": "2024003", "dueInDays": -200 }
+  ]
+}

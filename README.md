@@ -1,17 +1,19 @@
-# lab_activity_week6
+1. What is the difference between the Model, View, and ViewModel in this application?
 
-A new Flutter project.
+Model hanya menyimpan data (Book dan Loan). ViewModel (LibraryViewModel) membuat keputusan: apakah buku boleh dipinjam, berapa dendanya, dan apa statusnya. View hanya menampilkan hasilnya dan meneruskan aksi pengguna (tombol Pinjam dan Kembalikan) ke ViewModel.
 
-## Getting Started
+2. What should happen if a student attempts to borrow a book that already has an active loan?
 
-This project is a starting point for a Flutter application.
+Peminjaman harus ditolak. borrowBook() di ViewModel mengembalikan pesan "Buku ini sudah memiliki pinjaman aktif." dan tidak mengubah data apa pun, lalu View hanya menampilkan pesan itu lewat SnackBar.
 
-A few resources to get you started if this is your first Flutter project:
+3. Why is it better to calculate the fine in one place rather than repeating the formula in multiple widgets?
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+Kalau rumus disalin ke banyak widget, hasilnya bisa berbeda-beda dan setiap salinan harus diubah saat aturan berubah. Dengan satu tempat (FineCalculator), semua layar menampilkan angka yang sama dan perbaikan cukup dilakukan sekali.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+4. What is the difference between a book being Overdue and being Missing?
+
+Overdue (Terlambat) berarti tanggal jatuh tempo sudah lewat dan dendanya Rp5.000 untuk setiap minggu penuh keterlambatan. Missing (Hilang) berarti sudah enam bulan kalender sejak jatuh tempo, dan mahasiswa membayar harga penggantian buku sepenuhnya (replacementPrice), bukan denda mingguan.
+
+5. If the university changes its weekly fine from Rp5,000 to Rp7,000, how should the app be updated?
+
+Ubah satu nilai di lib/viewmodels/fine_calculator.dart: finePerWeek = 7000. Tampilan ikut menyesuaikan tanpa perubahan lain, dan angka yang diharapkan di test/widget_test.dart perlu disesuaikan dengan tarif baru.
